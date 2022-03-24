@@ -1,4 +1,3 @@
-# Least Significant Bit Digital Image Watermarking
 
 ![DigitalImageWatermarking](https://github.com/azizoglu/LSBWatermarking/blob/main/assets/digital-image-watermarking.png?raw=true)
 

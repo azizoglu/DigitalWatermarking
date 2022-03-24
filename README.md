@@ -6,11 +6,9 @@
 <br />
 <div align="center">
 
-  <h3 align="center">LSB Watermarking</h3>
+  <h3 align="center">Digital Image Watermarking</h3>
 
   <p align="center">
-    This project was created for the purpose of embedding a watermark into the cover image with least significant bit method. 
-     <br/>
     :newspaper: <a href = "https://www.gokhanazizoglu.com/dijital-goruntu-damgalama-digital-image-watermarking/">See blog post</a>
   </p>
 </div>

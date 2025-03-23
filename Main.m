@@ -2,7 +2,7 @@ function Main()
 %% Reading Cover Image and Watermark Image
 
 % First we will read lena image, this image will be our cover image and we will hide a watermark in it
-coverImagePath = 'TestImages/lena_gray.jpg';
+coverImagePath = 'TestImages/baboon.tiff';
 coverImage = imread(coverImagePath);
 % and than we will convert this image to gray image
 coverImage = rgb2gray(coverImage);
@@ -35,8 +35,8 @@ watermarkedImage = embedWatermark(watermarkImage,coverImage);
 % After embedding watermark we can measure the imperceptibility of this watermarked image
 % I have already told you about two metrics PSNR and MSE
 % i have two function for this metrics 
-PSNR = PeakSignaltoNoiseRatio(coverImage, watermarkedImage);
-MSE = MeanSquareError(coverImage, watermarkedImage);
+PSNR = psnr(coverImage, watermarkedImage);
+MSE = mse(coverImage, watermarkedImage);
 fprintf('WatermarkedImage PSNR: %f MSE: %f\n\n',PSNR,MSE);
 
 % Showing watermarked and cover image
@@ -93,8 +93,8 @@ title('Watermarked Image')
 [extractedWatermark] = extractWatermark(watermarkedImage,size(watermarkImage,1),size(watermarkImage,2));
 
 % Similarity between original watermark and extracted watermark
-PSNR = PeakSignaltoNoiseRatio(watermarkImage, extractedWatermark);
-MSE = MeanSquareError(watermarkImage, extractedWatermark);
+PSNR = psnr(double(watermarkImage), extractedWatermark);
+MSE = mse(watermarkImage, extractedWatermark);
 fprintf('Watermark PSNR: %f MSE: %f\n\n',PSNR,MSE);
 
 figure(3);
@@ -116,11 +116,11 @@ function [watermarkedImage] = embedWatermark(watermark,coverImage)
            
             %now let's take the original image pixel in which we will embed the watermark
             % after that we will convert it to eight bit binary
-            B = de2bi(coverImage(x,y),'left-msb');
+            B = Decimal2Binary(coverImage(x,y),'left-msb');
             % we will change our bit with least significant bit of cover image
             B(1,size(B,2)) = watermark(x,y);
             % now let's get our watermarked pixel by converting this number back to decimal. 
-            coverImage(x,y) = bi2de(B,'left-msb');
+            coverImage(x,y) = Binary2Decimal(B,'left-msb');
         end
         %finally we have a watermarkedImage
         watermarkedImage = coverImage;
@@ -142,7 +142,7 @@ function [extractedWatermark] = extractWatermark(watermarkedImage,sizeX,sizeY)
             %now let's take the watermarked image pixel in 
             %which we will embed the watermark 
             % after that we will convert it to eight bit binary
-            B = de2bi(watermarkedImage(x,y),'left-msb');
+            B = Decimal2Binary(watermarkedImage(x,y),'left-msb');
             % now we will fill our pattern with the bits we got from the watermarked image
             extractedWatermark(x,y) = B(1,size(B,2));
         end

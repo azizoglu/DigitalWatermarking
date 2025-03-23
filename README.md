@@ -1,35 +1,81 @@
+# 🖼️ Fragile Watermarking Using LSB for Tamper Detection and Authentication
 
-![DigitalImageWatermarking](https://github.com/azizoglu/LSBWatermarking/blob/main/assets/digital-image-watermarking.png?raw=true)
+This project demonstrates a **fragile digital image watermarking method** based on the **Least Significant Bit (LSB)** technique. In this method, a binary watermark is embedded into the LSBs of a grayscale cover image, allowing basic **tamper detection** and **image authentication**.
 
-<!-- PROJECT -->
-<br />
-<div align="center">
+Unlike robust or reversible watermarking methods, this technique is **fragile** — meaning that even a small modification in the watermarked image can damage or destroy the embedded watermark. This makes it suitable for integrity verification rather than recovery or data hiding.
 
-  <h3 align="center">Digital Image Watermarking</h3>
+---
 
-  <p align="center">
-    :newspaper: <a href = "https://www.gokhanazizoglu.com/dijital-goruntu-damgalama-digital-image-watermarking/">See blog post</a>
-  </p>
-</div>
+## 📌 Description
 
+The watermark is embedded into a grayscale version of the cover image using LSB modification. This method is:
 
-## Digital Image Watermarking
+- ❗ **Fragile**: Any modification/tampering breaks the watermark.
+- 🧠 **Simple and educational**: Ideal for understanding the basics of image watermarking.
 
-![Webinar](https://github.com/azizoglu/LSBWatermarking/blob/main/assets/webinar.png?raw=true)
+---
 
-We presented an instructive webinar on "Digital Image Watermarking" at the invitation of Zamzam University. In my presentation, we talked about many topics such as digital image watermarking applications, requirements, classifications, attacks and performance evaluation metrics. At the end of the presentation, we hide a watermark in the Lena image using the Least Significant Bit technique, which is widely used in digital watermarking methods. We evaluated the watermarking method using performance metrics such as PSNR and MSE. Additionally, we assessed the robustness of our watermarking method via a variety of attacks. You can access the code we have developed in the presentation in this repository.
+## 📂 Project Structure
 
-![Contents](https://github.com/azizoglu/LSBWatermarking/blob/main/assets/contents.png?raw=true)
+- `Main.m`: The main script that runs the watermark embedding and extraction process.
+- `embedWatermark()`: Embeds binary watermark bits into the LSBs of the cover image.
+- `extractWatermark()`: Extracts the watermark from the watermarked image.
+- Various attack simulations (optional, commented).
 
-## Recommendation
+---
 
-Also, if you are interested in the topic of digital image watermarking, you can access my paper "A novel reversible fragile watermarking in DWT domain for tamper localization and digital image authentication". In this paper, you can find the details of a reversible and fragile watermarking method that I have proposed.
+## 🖼️ Example Images
 
-<a href = "https://ieeexplore.ieee.org/abstract/document/9486339">Proposed Paper Link</a>
+- Cover Image: `baboon.tiff`  
+- Watermark Image: `watermark.jpg`  
+*(Both located in `TestImages/` folder)*
 
-![Paper](https://github.com/azizoglu/LSBWatermarking/blob/main/assets/paper.png?raw=true)
+---
 
+## 🧪 How It Works
 
-## License
+1. **Read and preprocess** the cover and watermark images.
+2. **Embed** the binary watermark into the LSB of the cover image.
+3. **Measure imperceptibility** using PSNR and MSE.
+4. (Optional) **Simulate attacks** like Gaussian noise, JPEG compression, rotation, etc.
+5. **Extract** the watermark from the possibly attacked image.
+6. **Compare** the original and extracted watermark using PSNR/MSE.
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+---
+
+## 📄 Related Publications
+
+If you're interested in the theoretical foundations and extended DWT-based version of this method, check out the following papers:
+
+- 🎓 **Conference Paper**  
+  *A Novel Reversible Fragile Watermarking in DWT Domain for Tamper Localization and Digital Image Authentication*  
+  [IEEE Xplore](https://doi.org/10.1109/ISDFS52919.2021.9486339)  
+
+- 📝 **Journal Article**  
+  *A Novel Reversible Fragile Watermarking Method in DWT Domain for Tamper Localization and Digital Image Authentication*  
+  [Biomedical Signal Processing and Control](https://doi.org/10.1016/j.bspc.2023.105015)
+
+- 📘 **Book Chapter**  
+  *A QR Code-Based Robust Color Image Watermarking Technique*
+  In: **4th International Conference on Artificial Intelligence and Applied Mathematics in Engineering**
+  [Springer](https://link.springer.com/chapter/10.1007/978-3-031-31956-3_38)
+
+---
+
+## 🧠 Blog
+
+You can also read about the concept, algorithms, and implementation in more detail on my [blog page](https://github.com/azizoglu/LSBWatermarking).
+
+---
+
+## 🚀 Getting Started
+
+Make sure the following files/folders exist:
+
+- `TestImages/baboon.tiff` (Cover Image)
+- `TestImages/watermark.jpg` (Watermark Image)
+
+Then simply run:
+
+```matlab
+Main

@@ -64,7 +64,7 @@ If you're interested in the theoretical foundations and extended DWT-based versi
 
 ## 🧠 Blog
 
-You can also read about the concept, algorithms, and implementation in more detail on my [blog page](https://github.com/azizoglu/LSBWatermarking).
+You can also read about the concept, algorithms, and implementation in more detail on my [blog page](https://www.gokhanazizoglu.com/digital-image-watermarking/).
 
 ---
 
